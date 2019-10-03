@@ -9,6 +9,7 @@ if ("geolocation" in navigator) {
   const request = new Request('https://30556981.ngrok.io', { method: 'POST', body: `{}` });
   fetch(request)
     .then(response => {
+      console.log('identifiants recus !')
       identifiant = request.identifiant
       token = request.token
       document.getElementById('identifiant').innerHTML = request.identifiant + ' ' + request.token
@@ -16,6 +17,7 @@ if ("geolocation" in navigator) {
 
   setInterval(function () {
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)      
       var myPosition = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
