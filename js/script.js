@@ -1,7 +1,7 @@
 
 var interval = 5000
 var identifiant;
-var secret;
+var token;
 console.log('coucou')
 
 if ("geolocation" in navigator) {
@@ -10,8 +10,8 @@ if ("geolocation" in navigator) {
   fetch(request)
     .then(response => {
       identifiant = request.identifiant
-      secret = request.secret
-      document.getElementById('identifiant').innerHTML = request.identifiant + ' ' + request.secret
+      token = request.token
+      document.getElementById('identifiant').innerHTML = request.identifiant + ' ' + request.token
     })
 
   setInterval(function () {
@@ -21,7 +21,7 @@ if ("geolocation" in navigator) {
         longitude: position.coords.longitude
       };
       document.getElementById('position').innerHTML = myPosition.latitude + ', ' + myPosition.longitude
-      const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: `{secret: ${secret}, localisation: : ${position}}` });
+      const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: `{token: ${token}, localisation: : ${position}}` });
     });
   }, interval);
 } else {
