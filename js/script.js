@@ -21,12 +21,13 @@ function sharePosition() {
         console.log(position)
         var myPosition = {
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy
         };
         document.getElementById('position').innerHTML = myPosition.latitude + ', ' + myPosition.longitude
         document.getElementById('dateDernierePosition').innerHTML = new Date();
         
-        const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: `{token: ${token}, localisation: : ${position}}` });
+        const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: `{token: ${token}, localisation: : ${JSON.stringify(myPosition)}}` });
         fetch(request).then(response => console.log(response))
       });
     }, interval);
