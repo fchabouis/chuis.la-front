@@ -1,0 +1,10 @@
+#identifiant, #position {
+    padding-top: 20px;
+}
+
+#partager {
+    width: 70%;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+}
