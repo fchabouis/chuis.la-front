@@ -26,8 +26,8 @@ function sharePosition() {
         };
         document.getElementById('position').innerHTML = myPosition.latitude + ', ' + myPosition.longitude
         document.getElementById('dateDernierePosition').innerHTML = new Date();
-        
-        const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: `{token: ${token}, localisation: : ${JSON.stringify(myPosition)}}` });
+        let body = {'token': token, 'localisation': myPosition}
+        const request = new Request(`https://30556981.ngrok.io/${identifiant}`, { method: 'POST', body: JSON.stringify(body)});
         fetch(request).then(response => console.log(response))
       });
     }, interval);
