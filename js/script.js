@@ -9,10 +9,11 @@ function sharePosition() {
     fetch(request)
       .then(response => {
         console.log('identifiants recus !')
-        console.log(response)
-        identifiant = response.identifiant
-        token = response.token
-        document.getElementById('identifiant').innerHTML = `Réponse du serveur<br>identifiant: ${identifiant}<br>token: ${token}`
+        response.json().then(data => {
+          identifiant = data.id
+          token = data.token
+          document.getElementById('identifiant').innerHTML = `Réponse du serveur<br>identifiant: ${identifiant}<br>token: ${token}`
+        });
       })
 
     setInterval(function () {
